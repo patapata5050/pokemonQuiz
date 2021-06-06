@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "serve": "npm-run-all -p dev lint:watch prettier:watch",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prettier:watch": "onchange './**/*.{ts,tsx}' -- prettier --config ./.prettierrc --write {{changed}}",
+    "lint:watch": "onchange './**/*.{ts,tsx}' -- eslint --fix './**/*.{ts,tsx}'"
   },
   "dependencies": {
     "next": "10.2.3",
@@ -13,7 +16,16 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@types/react": "17.0.9",
-    "typescript": "4.3.2"
+    "@types/node": "^15.12.1",
+    "@types/react": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-react": "^7.24.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "prettier": "2.3.1",
+    "typescript": "^4.3.2"
   }
 }
