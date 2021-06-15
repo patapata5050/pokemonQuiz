@@ -1,24 +1,43 @@
 import classNames from 'classnames'
+import styles from 'src/styles/component/text.module.scss'
 
 type Props = {
   children: React.ReactNode
   size: string
-  bold?: string
+  bold?: boolean
+  color?: string
   style?: { [key: string]: string }
   className?: string
 }
 
-const Text: React.FC<Props> = ({ children, size, bold, style, className }) => {
-  // fontサイズを定義
-  const fontStyle = new Map([
-    ['large', 'f36'],
-    ['medium', 'f24'],
-    ['small', 'f18'],
-  ])
+// fontサイズを定義
+const fontStyle = new Map([
+  ['large', styles.f36],
+  ['medium', styles.f24],
+  ['small', styles.f18],
+])
 
-  const classes = classNames('text', fontStyle.get(size), className, {
-    bold,
-  })
+// fontカラーを定義
+const fontColor = new Map([
+  ['white', styles.white],
+  ['black', styles.black],
+])
+
+const Text: React.FC<Props> = ({
+  children,
+  size,
+  bold = false,
+  color = 'black',
+  style = {},
+  className = '',
+}) => {
+  const classes = classNames(
+    { [`${styles.bold}`]: bold },
+    styles.text,
+    fontStyle.get(size),
+    fontColor.get(color),
+    className
+  )
 
   return (
     <p style={style} className={classes}>

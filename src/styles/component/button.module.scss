@@ -1,0 +1,14 @@
+@import '../variables';
+
+.button {
+  border: none;
+  border-radius: 9999px;
+  color: $white;
+  cursor: pointer;
+  height: 50px;
+  width: 200px;
+
+  &.red {
+    background-color: $red;
+  }
+}

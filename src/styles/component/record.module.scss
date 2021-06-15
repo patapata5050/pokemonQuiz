@@ -1,0 +1,11 @@
+@import '../variables';
+
+/* block--element-modifier */
+.record {
+  align-items: center;
+  display: flex;
+
+  .recordText {
+    margin-left: 12px;
+  }
+}
