@@ -12,12 +12,17 @@ const getOriginalName = () => {
 // MEMO: 多言語にする可能性があるので、translatedNameとしている
 // 英語名
 const getTranslatedName = () => {
-  const names = useSelector(state => state.pokemonState.pokemon.data)
+  const names = useSelector(state => state.pokemonState.pokemon.data.names)
   const name = names.find(item => item.language.name === 'en').name
   return name
 }
 
+const getPokemonId = () => {
+  return useSelector(state => state.pokemonState.pokemon.data.id)
+}
+
 export default {
   getOriginalName,
-  getTranslatedName
+  getTranslatedName,
+  getPokemonId
 }

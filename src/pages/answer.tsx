@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import styles from '../styles/pages/answer.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInformation } from '../store/ducks/pokemon/operations'
 import Answer from '../layout/answer'
@@ -17,13 +18,13 @@ const AnswerPage = () => {
 
   if (isFetched) {
     return (
-      <div className="page-answer">
+      <div>
         <Answer />
       </div>
     )
   }
 
-  return <div>Now loading...</div>
+  return <div className={styles.loading}>Now loading...</div>
 }
 
 export default AnswerPage

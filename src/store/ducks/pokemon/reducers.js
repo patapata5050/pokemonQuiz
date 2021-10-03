@@ -4,6 +4,7 @@ import types from './types'
 const initialState = {
   isFetched: false,
   data: {
+    id: 1,
     names: []
   },
 }
@@ -24,6 +25,7 @@ const pokemon = (state = [initialState], action) => {
         ...state,
         isFetched: true,
         data: {
+          id: action.data.id,
           names: action.data.names
         }
       }

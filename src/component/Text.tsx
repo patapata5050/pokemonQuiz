@@ -21,6 +21,8 @@ const fontStyle = new Map([
 const fontColor = new Map([
   ['white', styles.white],
   ['black', styles.black],
+  ['red', styles.red],
+  ['blue', styles.blue],
 ])
 
 const Text: React.FC<Props> = ({

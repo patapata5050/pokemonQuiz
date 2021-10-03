@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '/src/styles/pages/index.module.scss'
+import styles from '../styles/pages/index.module.scss'
 import Link from 'next/link'
 import Text from '../component/Text'
 import Button from '../component/Button'
