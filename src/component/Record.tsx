@@ -1,6 +1,6 @@
 import Text from './Text'
 import Image from 'next/image'
-import styles from 'src/styles/component/record.module.scss'
+import styles from '/src/styles/component/record.module.scss'
 
 const Record: React.FC<{ record: number }> = ({ record }) => {
   const recordText = record !== 0 ? `${record}問連続正解` : '記録なし'

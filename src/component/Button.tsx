@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import styles from 'src/styles/component/button.module.scss'
+import styles from '/src/styles/component/button.module.scss'
 import Text from './Text'
 
 type Props = {

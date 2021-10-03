@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import styles from 'src/styles/pages/index.module.scss'
+import styles from '/src/styles/pages/index.module.scss'
 import Link from 'next/link'
-import Text from 'src/component/Text'
-import Button from 'src/component/Button'
+import Text from '../component/Text'
+import Button from '../component/Button'
 // import SlideImages from 'src/component/SlideImages'
-import Record from 'src/component/Record'
+import Record from '../component/Record'
 
 const Index: React.FC = () => {
   return (
@@ -15,8 +15,8 @@ const Index: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <div className="home">
+      <main>
+        <div className={styles.pageHome}>
           <Text size="large" bold={true} className={styles.title}>
             ポケモン英語で
             <br />
