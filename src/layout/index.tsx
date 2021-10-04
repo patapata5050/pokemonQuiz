@@ -5,8 +5,15 @@ import Text from '../component/Text'
 import Button from '../component/Button'
 // import SlideImages from 'src/component/SlideImages'
 import Record from '../component/Record'
+import { useEffect, useState } from 'react'
 
 const Index: React.FC = () => {
+  const [record, setRecord] = useState(0)
+  useEffect(() => {
+    const record = parseInt(localStorage.getItem('record')!)
+    setRecord(record)
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -23,7 +30,7 @@ const Index: React.FC = () => {
             言えるかな
           </Text>
           {/* <SlideImages numbers={['001', '002', '003', '004']} /> */}
-          <Record record={0} />
+          <Record record={record} />
           <Link href="/answer">
             <Button text="スタート" />
           </Link>

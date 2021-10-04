@@ -17,10 +17,9 @@ const getInformationFailure = (error) => ({
   error,
 })
 
-const getInformation = () => {
-  const randomNumber = getRandomInt(1, POKEMON_COUNT)
+const getInformation = (pokemonId: string | null = null) => {
+  const randomNumber = pokemonId ? pokemonId : getRandomInt(1, POKEMON_COUNT)
   const pokemonDetailUrl = `https://pokeapi.co/api/v2/pokemon-species/${randomNumber}`
-  // console.log('URL', pokemonDetailUrl)
 
   return (dispatch) => {
     dispatch(getInformationRequest())

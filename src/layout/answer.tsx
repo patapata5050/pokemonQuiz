@@ -9,10 +9,16 @@ const Answer = () => {
   const router = useRouter()
   const [errorMessage, setErrorMessage] = useState('')
   const originalName = pokemonSelectors.getOriginalName()
+  console.log('答え', pokemonSelectors.getTranslatedName())
   // ポケモンIDを3桁で取得
   const pokemonId = ('000' + pokemonSelectors.getPokemonId()).slice(-3)
 
+  // リロード対策用にポケモンIDをセットしておき、ポケモンIDが保持されていたらそのポケモンがロードされるようにする
+  localStorage.setItem('pokemonId', pokemonId)
+
   const [answer, setAnswer] = useState('')
+
+  const quizNumber = localStorage.getItem('quizNumber')
 
   const checkAnswer = () => {
     // 答えが未入力の場合
@@ -29,7 +35,7 @@ const Answer = () => {
   return (
     <div className={styles.pageAnswer}>
       <Text size="large" bold={true}>
-        第1問
+        第{quizNumber}問
       </Text>
       <img
         className={styles.pokemonImg}
