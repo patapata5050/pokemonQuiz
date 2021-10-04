@@ -8,10 +8,11 @@ const AnswerPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const fetchInformation = () => {
-      dispatch(getInformation())
+    const fetchInformation = (pokemonId: string | null = null) => {
+      dispatch(getInformation(pokemonId))
     }
-    fetchInformation()
+    const pokemonId = localStorage.getItem('pokemonId')
+    fetchInformation(pokemonId)
   }, [dispatch])
 
   const isFetched = useSelector((state) => state.pokemonState.pokemon.isFetched)

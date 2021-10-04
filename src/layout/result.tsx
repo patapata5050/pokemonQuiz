@@ -14,15 +14,20 @@ const Result = () => {
   const answer: string = router.query.answer as string
   const isCorrect = answer.toLowerCase() === translatedName.toLowerCase()
 
-  const result = isCorrect
-    ? {
-      label: '正解！',
-      color: 'red',
-    }
-    : {
-      label: '残念...',
-      color: 'blue',
-    }
+  // クイズ正解時
+  if (isCorrect) {
+    const quizNumber = parseInt(localStorage.getItem('quizNumber')!)
+    localStorage.setItem('quizNumber', (quizNumber + 1).toString())
+
+    const record = parseInt(localStorage.getItem('record')!)
+    quizNumber > record
+      ? localStorage.setItem('record', quizNumber.toString())
+      : ''
+
+    // クイズ不正解時
+  } else {
+    localStorage.setItem('quizNumber', '1')
+  }
 
   const ButtonElements = () => {
     if (isCorrect) {
@@ -31,15 +36,28 @@ const Result = () => {
     return <Button text="ホームへ" onClick={() => router.push('/')} />
   }
 
+  const ResultTextElements = () => {
+    if (isCorrect) {
+      return (
+        <Text size="large" color="red">
+          正解！
+        </Text>
+      )
+    }
+    return (
+      <Text size="large" color="blue">
+        残念...
+      </Text>
+    )
+  }
+
   return (
     <div className={styles.pageResult}>
       <img
         className={styles.pokemonImg}
         src={`https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${pokemonId}.png`}
       />
-      <Text size="large" color={result.color}>
-        {result.label}
-      </Text>
+      {ResultTextElements()}
       <Text size="large" bold>
         <span style={{ fontSize: 18 }}>答えは</span>
         {translatedName}
