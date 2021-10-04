@@ -9,7 +9,7 @@ const Answer = () => {
   const router = useRouter()
   const [errorMessage, setErrorMessage] = useState('')
   const originalName = pokemonSelectors.getOriginalName()
-  // console.log('答え', pokemonSelectors.getTranslatedName())
+  console.log('答え', pokemonSelectors.getTranslatedName())
   // ポケモンIDを3桁で取得
   const pokemonId = ('000' + pokemonSelectors.getPokemonId()).slice(-3)
 
