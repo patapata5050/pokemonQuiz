@@ -17,7 +17,12 @@ const getInformationFailure = (error) => ({
   error,
 })
 
-const getInformation = (pokemonId: string | null = null) => {
+const setInitialStates = () => ({
+  type: types.SET_INITIAL_STATES,
+})
+
+const getInformation = (pokemonId: number | null = null) => {
+  console.log('取得ID', pokemonId)
   const randomNumber = pokemonId ? pokemonId : getRandomInt(1, POKEMON_COUNT)
   const pokemonDetailUrl = `https://pokeapi.co/api/v2/pokemon-species/${randomNumber}`
 
@@ -30,4 +35,4 @@ const getInformation = (pokemonId: string | null = null) => {
   }
 }
 
-export { getInformation }
+export { getInformation, setInitialStates }

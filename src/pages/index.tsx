@@ -4,13 +4,15 @@ import Index from '../layout'
 
 const IndexPage: React.FC = () => {
   const [initialized, setInitialized] = useState(false)
+
   useEffect(() => {
     // 初期処理
     const record = localStorage.getItem('record')
 
     // 初回時の処理
+    console.log('localStorage1', localStorage)
     localStorage.removeItem('pokemonId')
-    localStorage.removeItem('quizNumber')
+    console.log('localStorage2', localStorage)
     // クイズ番号
     localStorage.setItem('quizNumber', '1')
     if (!record) {

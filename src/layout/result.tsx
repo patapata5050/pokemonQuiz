@@ -6,8 +6,9 @@ import { pokemonSelectors } from '../store/ducks/pokemon'
 
 const Result = () => {
   const router = useRouter()
+
   // ポケモンIDを3桁で取得
-  const pokemonId = ('000' + pokemonSelectors.getPokemonId()).slice(-3)
+  const pokemonId = ('000' + localStorage.getItem('pokemonId')!).slice(-3)
   const translatedName = pokemonSelectors.getTranslatedName()
 
   // 正誤判定
@@ -29,11 +30,16 @@ const Result = () => {
     localStorage.setItem('quizNumber', '1')
   }
 
+  const moveToNext = (url: string) => {
+    localStorage.removeItem('pokemonId')
+    router.push(url)
+  }
+
   const ButtonElements = () => {
     if (isCorrect) {
-      return <Button text="次の問題" onClick={() => router.push('/answer')} />
+      return <Button text="次の問題" onClick={() => moveToNext('/answer')} />
     }
-    return <Button text="ホームへ" onClick={() => router.push('/')} />
+    return <Button text="ホームへ" onClick={() => moveToNext('/')} />
   }
 
   const ResultTextElements = () => {

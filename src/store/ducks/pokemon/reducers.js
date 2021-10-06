@@ -35,6 +35,10 @@ const pokemon = (state = [initialState], action) => {
         isFetched: true,
         error: action.error,
       }
+    case types.SET_INITIAL_STATES:
+      return {
+        ...initialState
+      }
     default:
       return state
   }
