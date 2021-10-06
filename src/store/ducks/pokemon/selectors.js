@@ -1,6 +1,10 @@
 // selectors とは、state から必要な値を算出する関数のこと。state をシンプルに保つために、既存の state から算出できる値はすべて Selectors 経由で取得する。
 import { useSelector } from "react-redux";
 
+const getIsFetched = () => {
+  return useSelector(state => state.pokemonState.pokemon.isFetched)
+}
+
 // MEMO: 多言語にする可能性があるので、originalNameとしている
 // 日本語名を取得
 const getOriginalName = () => {
@@ -22,6 +26,7 @@ const getPokemonId = () => {
 }
 
 export default {
+  getIsFetched,
   getOriginalName,
   getTranslatedName,
   getPokemonId

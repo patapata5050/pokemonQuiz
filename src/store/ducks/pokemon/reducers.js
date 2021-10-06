@@ -10,7 +10,6 @@ const initialState = {
 }
 
 const pokemon = (state = [initialState], action) => {
-  console.log("action.data", action.data)
   switch (action.type) {
     case types.FETCH_POKEMON_INFO_REQUEST:
       return {

@@ -10,9 +10,7 @@ const IndexPage: React.FC = () => {
     const record = localStorage.getItem('record')
 
     // 初回時の処理
-    console.log('localStorage1', localStorage)
     localStorage.removeItem('pokemonId')
-    console.log('localStorage2', localStorage)
     // クイズ番号
     localStorage.setItem('quizNumber', '1')
     if (!record) {

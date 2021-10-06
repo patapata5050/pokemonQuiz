@@ -4,15 +4,15 @@ import Text from '../component/Text'
 import Button from '../component/Button'
 import { pokemonSelectors } from '../store/ducks/pokemon'
 
-const Result = () => {
+const Result = (props) => {
   const router = useRouter()
 
   // ポケモンIDを3桁で取得
-  const pokemonId = ('000' + localStorage.getItem('pokemonId')!).slice(-3)
+  const pokemonId = ('000' + pokemonSelectors.getPokemonId()).slice(-3)
   const translatedName = pokemonSelectors.getTranslatedName()
 
   // 正誤判定
-  const answer: string = router.query.answer as string
+  const answer = props.answer
   const isCorrect = answer.toLowerCase() === translatedName.toLowerCase()
 
   // クイズ正解時
@@ -31,6 +31,7 @@ const Result = () => {
   }
 
   const moveToNext = (url: string) => {
+    localStorage.removeItem('answer')
     localStorage.removeItem('pokemonId')
     router.push(url)
   }

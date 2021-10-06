@@ -26,9 +26,10 @@ const Answer = () => {
       setErrorMessage('答えを入力してね')
       return
     }
+    localStorage.setItem('answer', answer)
+    // 結果ページへ遷移
     router.push({
       pathname: '/result',
-      query: { answer },
     })
   }
 

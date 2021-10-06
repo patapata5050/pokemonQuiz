@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/pages/answer.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {
   getInformation,
   setInitialStates,
 } from '../store/ducks/pokemon/operations'
 import Answer from '../layout/answer'
+import { pokemonSelectors } from '../store/ducks/pokemon'
 
 const AnswerPage = () => {
   const dispatch = useDispatch()
   const [initialized, setInitialized] = useState(false)
+  const isFetched = pokemonSelectors.getIsFetched()
 
   useEffect(() => {
     // Storeの値を初期化
@@ -17,7 +19,6 @@ const AnswerPage = () => {
     setInitialized(true)
 
     const pokemonIdString = localStorage.getItem('pokemonId')
-    // const pokemonIdString = null
     const pokemonId = pokemonIdString ? parseInt(pokemonIdString) : null
 
     const fetchInformation = (pokemonId: number | null = null) => {
@@ -26,9 +27,8 @@ const AnswerPage = () => {
     fetchInformation(pokemonId)
   }, [dispatch])
 
-  const isFetched = useSelector((state) => state.pokemonState.pokemon.isFetched)
-
   // FIXME: isFetchedのみで判定したいところだが、パッとやり方が思いつかなかった
+  // isFetchのみで判定すると、クイズ不正解 -> ホーム -> 回答画面に来たときに同じポケモンが取得される
   if (initialized && isFetched) {
     return (
       <div>
